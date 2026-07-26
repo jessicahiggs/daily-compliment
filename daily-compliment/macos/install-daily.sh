@@ -19,6 +19,26 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 runner="$here/show-compliment.sh"
 chmod +x "$runner"
 
+# Build Compliment.app — the pop-up is shown by a small standalone, code-signed
+# app instead of a raw osascript call. A signed app has a stable identity, so
+# macOS remembers the permission grant instead of re-prompting the daily job
+# forever. (A bare bash -> osascript chain has no durable identity to grant.)
+app="$here/Compliment.app"
+src="$here/compliment-dialog.applescript"
+if [[ -f "$src" ]]; then
+  rm -rf "$app"
+  osacompile -o "$app" "$src"
+  info="$app/Contents/Info.plist"
+  /usr/libexec/PlistBuddy -c "Add :CFBundleIdentifier string com.user.daily-compliment" "$info" 2>/dev/null \
+    || /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier com.user.daily-compliment" "$info"
+  /usr/libexec/PlistBuddy -c "Add :CFBundleName string Compliment" "$info" 2>/dev/null || true
+  # Ad-hoc signature: enough to give TCC a stable identity to attach the grant to.
+  codesign --force --deep -s - "$app" >/dev/null 2>&1 || true
+else
+  echo "note: compliment-dialog.applescript not found — the pop-up will use a" >&2
+  echo "      plain dialog that may prompt for permission on each scheduled run." >&2
+fi
+
 label="com.user.daily-compliment"
 plist="$HOME/Library/LaunchAgents/$label.plist"
 mkdir -p "$HOME/Library/LaunchAgents"
