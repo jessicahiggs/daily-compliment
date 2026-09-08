@@ -10,6 +10,11 @@ Once a day, at the time you pick, your compliment quietly appears as a pop-up:
 
 <img width="418" height="135" alt="Daily compliment pop-up" src="https://github.com/user-attachments/assets/1e0fdc13-f5af-40b8-985b-1950342af1e9" />
 
+## Me presenting this awesome skill
+
+<img width="927" height="479" alt="Compliment app screenshot" src="https://github.com/user-attachments/assets/af7aefd6-b7c3-480b-b2e7-e69abaf20438" />
+
+
 ## What it does
 
 Looks at what you've actually talked to Claude about and notices something real — something you mentioned being stressed or insecure about, or something you're proud of or put effort into — and reflects it back as one warm, unambiguously positive sentence. If there's nothing specific to draw on, it still gives a sincere, generic compliment. If it notices signs of a real crisis, it gently suggests reaching out to someone you trust rather than papering over it.
