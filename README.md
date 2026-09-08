@@ -10,7 +10,6 @@ Once a day, at the time you pick, your compliment quietly appears as a pop-up:
 
 <img width="418" height="135" alt="Daily compliment pop-up" src="https://github.com/user-attachments/assets/1e0fdc13-f5af-40b8-985b-1950342af1e9" />
 
-## Me presenting this awesome skill
 
 <img width="927" height="479" alt="Compliment app screenshot" src="https://github.com/user-attachments/assets/af7aefd6-b7c3-480b-b2e7-e69abaf20438" />
 
